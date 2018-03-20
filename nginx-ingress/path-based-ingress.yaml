@@ -1,15 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: test-ingress
-  namespace: ingress-nginx
+  name: nginx-path-based-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - host: traefik.nginx.io
     http:
       paths:
-      - path: /aa-path
+      - path: /testpath
         backend:
-          serviceName: example-service
+          serviceName: nginx-service
           servicePort: 80
-
