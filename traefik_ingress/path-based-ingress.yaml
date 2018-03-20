@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip  # this field is required when path-based routing is enabled
+spec:
+  rules:
+  - host: traefik.nginx.io
+    http:
+      paths:
+      - path: /testpath
+        backend:
+          serviceName: example-service
+          servicePort: 80
