@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+  namespace: ingress-nginx
+spec:
+  rules:
+  - host: traefik.nginx.io
+    http:
+      paths:
+      - path: /aa-path
+        backend:
+          serviceName: example-service
+          servicePort: 80
+
